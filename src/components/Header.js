@@ -2,11 +2,9 @@ import React from "react";
 import { Navbar, Container, Offcanvas, Nav } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 
-function Header({ loggedIn, setLoggedIn }) {
-  function handleClick() {
-    setLoggedIn(false);
-    console.log(loggedIn);
-  }
+function Header({ loggedIn, handleLogout }) {
+  const handleClick = () => handleLogout()
+
   return (
     <>
       {[false].map((expand) => (
