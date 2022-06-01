@@ -1,38 +1,98 @@
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.login-form {
+  margin: 0 auto;
+  max-width: 26vh;
+}
+.home-nav {
+  margin: 0;
+}
+.log-in-link {
+  margin-right: 0;
+}
+.btn-34 {
+  margin: 0 auto;
+  margin-top: 5vh;
+
+  display: block;
+  box-sizing: border-box;
+  padding: 20px 45px;
+  border-radius: 999px;
+
+  position: relative;
+  overflow: hidden;
+
+  text-transform: uppercase;
+  border: 0.5px solid currentColor;
+
+  transition: transform 0.2s;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.btn-34:hover {
   color: white;
+  transform: scale(1.1);
 }
 
-.App-link {
-  color: #61dafb;
+.btn-34 span {
+  font-weight: 400;
+  mix-blend-mode: bicubic;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.btn-34:before {
+  content: "";
+  width: 0;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: black;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s;
+}
+.btn-34:hover:before {
+  width: 100%;
+}
+
+.home-name {
+  margin-top: 20vh;
+}
+.profile-greeting {
+  margin-top: 4vh;
+  margin-left: 4vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.greeting-user {
+  font-size: 7vh;
+}
+
+.profile-info {
+  margin-top: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.each-exercise {
+  margin-bottom: 2vh;
+  display: flex;
+
+  justify-content: space-around;
+}
+.each-exercise-img {
+  max-width: 14vh;
+  margin-right: 3vh;
+}
+.each-exercise-info {
+  text-align: left;
 }
