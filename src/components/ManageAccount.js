@@ -1,25 +1,41 @@
 import { useState } from "react";
+import { useHistory } from 'react-router-dom'
 import { Form, Button } from "react-bootstrap";
+import { URL } from './App'
 
-function ManageAccount() {
+function ManageAccount({ id }) {
   const [form, setForm] = useState({
-    name: "",
+    username: "",
     password: "",
   });
+
+  let history = useHistory()
+
+  let userURL = `${URL}/user/${id.current}`
+
+  console.log(id)
 
   function handleSubmit(e) {
     e.preventDefault();
 
+    fetch(userURL, {
+      method: 'PATCH',
+      headers: {
+        'content-type': 'application/json'
+      }, body: JSON.stringify(form)
+    })
+
     setForm({
-      name: "",
+      username: "",
       password: "",
     });
   }
 
   function handleClick() {
-    fetch(``, {
+    fetch(userURL, {
       method: "DELETE",
-    }).then((r) => r.json());
+    })
+    history.push('/')
   }
 
   function handleChange(e) {
@@ -33,10 +49,10 @@ function ManageAccount() {
           <Form.Label>New Name</Form.Label>
           <Form.Control
             onChange={handleChange}
-            name="name"
-            value={form.name}
+            name="username"
+            value={form.username}
             type="text"
-            placeholder="Enter name"
+            placeholder="Enter username"
           />
           {/* <Form.Text className="text-muted"></Form.Text> */}
         </Form.Group>

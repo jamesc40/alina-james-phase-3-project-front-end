@@ -10,9 +10,12 @@ import HomeHeader from "./HomeHeader";
 import ManageAccount from "./ManageAccount";
 import Workout from "./Workout";
 
+export const URL = 'http://localhost:9292'
+
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   //const loggedIn = useRef(false)
+  const userId = useRef(undefined)
   let { pathname } = useLocation()
 
   const handleLogin = () => setLoggedIn(true)
@@ -34,10 +37,10 @@ function App() {
           <Signup loggedIn={loggedIn} handleLogin={handleLogin} />
         </Route>
         <Route exact path="/user/:id">
-          <UserInfo />
+          <UserInfo userId={userId}/>
         </Route>
         <Route exact path="/update">
-          <ManageAccount />
+          <ManageAccount id={userId} />
         </Route>
         <Route exact path="/workouts">
           <Workout />
