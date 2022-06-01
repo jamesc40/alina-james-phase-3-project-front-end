@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Switch, Route } from "react-router-dom";
+import { useRef, useState } from "react";
+import { Redirect, Route, Switch, useLocation } from "react-router-dom";
 import "../App.css";
 import Login from "./Login";
 import UserInfo from "./UserInfo";
@@ -12,32 +12,31 @@ import Workout from "./Workout";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
+  //const loggedIn = useRef(false)
+  let { pathname } = useLocation()
 
+  const handleLogin = () => setLoggedIn(true)
+  const handleLogout = () => setLoggedIn(false)
+
+  console.log(loggedIn)
   return (
     <div className="App">
+      {pathname === '/' || pathname === '/login' || pathname === 'signup' ? 
+        <HomeHeader /> : <Header loggedIn={loggedIn} handleLogout={handleLogout} /> }
       <Switch>
         <Route exact path="/">
-          {!loggedIn ? (
-            <>
-              <HomeHeader />
-              <HomePage />
-            </>
-          ) : null}
+          {!loggedIn.current ? <HomePage /> : null}
         </Route>
         <Route exact path="/login">
-          <HomeHeader />
-          <Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+          <Login loggedin={loggedIn} handleLogin={handleLogin} />
         </Route>
         <Route exact path="/signup">
-          <HomeHeader />
-          <Signup loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+          <Signup loggedIn={loggedIn} handleLogin={handleLogin} />
         </Route>
         <Route exact path="/user/:id">
-          <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
           <UserInfo />
         </Route>
         <Route exact path="/update">
-          <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
           <ManageAccount />
         </Route>
         <Route exact path="/workouts">
