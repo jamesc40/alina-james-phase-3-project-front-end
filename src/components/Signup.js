@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 
-function Signup({ loggedIn, setLoggedIn }) {
+function Signup({ loggedIn, handleLogin }) {
   const [form, setForm] = useState({
     name: "",
     image: "",
@@ -17,7 +17,6 @@ function Signup({ loggedIn, setLoggedIn }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    setLoggedIn(true);
     fetch("http://localhost:9292/signup", {
       method: "POST",
       headers: {
@@ -31,6 +30,7 @@ function Signup({ loggedIn, setLoggedIn }) {
           history.push(`/user/${data}`);
         }
       });
+    handleLogin()
   }
 
   return (
