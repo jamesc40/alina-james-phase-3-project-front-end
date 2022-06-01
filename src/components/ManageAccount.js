@@ -20,7 +20,7 @@ function ManageAccount() {
           Save
         </Button>
         <Button variant="primary" type="submit">
-          Delete Account
+          Delete
         </Button>
       </Form>
     </>
