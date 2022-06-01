@@ -7,6 +7,7 @@ import Signup from "./Signup";
 import HomePage from "./HomePage";
 import Header from "./Header";
 import HomeHeader from "./HomeHeader";
+import ManageAccount from "./ManageAccount";
 import Workout from './Workout'
 
 function App() {
@@ -35,6 +36,9 @@ function App() {
           <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
           <UserInfo />
         </Route>
+        <Route exact path="/update">
+          <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+          <ManageAccount />
         <Route exact path='/workouts'>
           <Workout />
         </Route>
