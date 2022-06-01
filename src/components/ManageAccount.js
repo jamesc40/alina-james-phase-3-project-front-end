@@ -1,26 +1,62 @@
-import React from "react";
+import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 
 function ManageAccount() {
+  const [form, setForm] = useState({
+    name: "",
+    password: "",
+  });
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    setForm({
+      name: "",
+      password: "",
+    });
+  }
+
+  function handleClick() {
+    fetch(``, {
+      method: "DELETE",
+    }).then((r) => r.json());
+  }
+
+  function handleChange(e) {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  }
+
   return (
     <>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>New Name</Form.Label>
-          <Form.Control type="text" placeholder="Enter name" />
-          <Form.Text className="text-muted"></Form.Text>
+          <Form.Control
+            onChange={handleChange}
+            name="name"
+            value={form.name}
+            type="text"
+            placeholder="Enter name"
+          />
+          {/* <Form.Text className="text-muted"></Form.Text> */}
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>New Password</Form.Label>
-          <Form.Control type="password" placeholder="Password" />
+          <Form.Control
+            onChange={handleChange}
+            name="password"
+            value={form.password}
+            type="password"
+            placeholder="Password"
+          />
         </Form.Group>
 
         <Button variant="primary" type="submit">
           Save
         </Button>
-        <Button variant="primary" type="submit">
-          Delete
+        <Button onClick={handleClick} variant="primary">
+          Delete Account
         </Button>
       </Form>
     </>
