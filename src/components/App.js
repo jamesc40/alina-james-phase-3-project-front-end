@@ -8,7 +8,7 @@ import HomePage from "./HomePage";
 import Header from "./Header";
 import HomeHeader from "./HomeHeader";
 import ManageAccount from "./ManageAccount";
-import Workout from './Workout'
+import Workout from "./Workout";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -39,7 +39,8 @@ function App() {
         <Route exact path="/update">
           <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
           <ManageAccount />
-        <Route exact path='/workouts'>
+        </Route>
+        <Route exact path="/workouts">
           <Workout />
         </Route>
       </Switch>
