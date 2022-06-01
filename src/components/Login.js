@@ -15,7 +15,7 @@ function Login({ loggedIn, setLoggedIn }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    setLoggedIn(!loggedIn);
+    setLoggedIn(true);
     console.log(loggedIn);
     fetch("http://localhost:9292/login", {
       method: "POST",

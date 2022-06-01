@@ -4,7 +4,7 @@ import { LinkContainer } from "react-router-bootstrap";
 
 function Header({ loggedIn, setLoggedIn }) {
   function handleClick() {
-    setLoggedIn(!loggedIn);
+    setLoggedIn(false);
     console.log(loggedIn);
   }
   return (
@@ -12,9 +12,8 @@ function Header({ loggedIn, setLoggedIn }) {
       {[false].map((expand) => (
         <Navbar key={expand} bg="light" expand={expand} className="mb-3">
           <Container fluid>
-            <LinkContainer to="/" exact>
-              <Navbar.Brand>MyFitnessPal</Navbar.Brand>
-            </LinkContainer>
+            <Navbar.Brand>MyFitnessPal</Navbar.Brand>
+
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
             <Navbar.Offcanvas
               id={`offcanvasNavbar-expand-${expand}`}
