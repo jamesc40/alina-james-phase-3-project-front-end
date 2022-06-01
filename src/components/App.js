@@ -7,7 +7,7 @@ import Signup from "./Signup";
 import HomePage from "./HomePage";
 import Header from "./Header";
 import HomeHeader from "./HomeHeader";
-import ModalComponent from "./ModalComponent";
+import ManageAccount from "./ManageAccount";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -37,7 +37,7 @@ function App() {
         </Route>
         <Route exact path="/update">
           <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
-          <ModalComponent />
+          <ManageAccount />
         </Route>
       </Switch>
     </div>

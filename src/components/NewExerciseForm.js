@@ -39,7 +39,7 @@ function NewExerciseForm({ id }) {
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
-  console.log(form);
+
   return (
     <Form onSubmit={handleSubmit}>
       <Row className="mb-3">
