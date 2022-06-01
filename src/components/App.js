@@ -11,12 +11,17 @@ import Workout from './Workout'
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
+
   return (
     <div className="App">
       <Switch>
         <Route exact path="/">
-          <HomeHeader />
-          <HomePage />
+          {!loggedIn ? (
+            <>
+              <HomeHeader />
+              <HomePage />
+            </>
+          ) : null}
         </Route>
         <Route exact path="/login">
           <HomeHeader />

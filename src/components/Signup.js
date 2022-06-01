@@ -17,7 +17,7 @@ function Signup({ loggedIn, setLoggedIn }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    setLoggedIn(!loggedIn);
+    setLoggedIn(true);
     fetch("http://localhost:9292/signup", {
       method: "POST",
       headers: {
