@@ -7,6 +7,7 @@ import Signup from "./Signup";
 import HomePage from "./HomePage";
 import Header from "./Header";
 import HomeHeader from "./HomeHeader";
+import ModalComponent from "./ModalComponent";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -33,6 +34,10 @@ function App() {
         <Route exact path="/user/:id">
           <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
           <UserInfo />
+        </Route>
+        <Route exact path="/update">
+          <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+          <ModalComponent />
         </Route>
       </Switch>
     </div>

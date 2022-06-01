@@ -30,7 +30,7 @@ function Header({ loggedIn, setLoggedIn }) {
                   <LinkContainer to="/" exact>
                     <Nav.Link href="#action1">Workouts</Nav.Link>
                   </LinkContainer>
-                  <LinkContainer to="/" exact>
+                  <LinkContainer to="/update" exact>
                     <Nav.Link href="#action2">Manage account</Nav.Link>
                   </LinkContainer>
                   <LinkContainer to="/" exact>
