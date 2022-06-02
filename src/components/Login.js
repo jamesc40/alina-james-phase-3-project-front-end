@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
 
-function Login({ handleLogin }) {
+function Login({ error, handleLogin }) {
   const [form, setForm] = useState({
     username: "",
     password: "",
@@ -27,6 +27,7 @@ function Login({ handleLogin }) {
 
   return (
     <div>
+      {error.length > 0 ? <p className='mx-3'> {error} </p> : null} 
       <Form className="login-form" onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Username</Form.Label>

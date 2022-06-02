@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
+import EachWorkout from './EachWorkout'
 
 export default function Workout() {
-  const [workouts, setWorkouts] = useState([]);
+  const [workouts, setWorkouts] = useState(undefined);
 
   useEffect(() => {
     fetch(`http://localhost:9292/workouts`)
@@ -9,12 +10,13 @@ export default function Workout() {
       .then((data) => setWorkouts(data));
   }, []);
 
-  console.log(workouts);
+  if (workouts === undefined) return <p>loading</p>;
+
   const bestUser = workouts.most_active_user;
   const bestWorkout = workouts.most_popular_workout;
   const allWorkouts = workouts.workouts;
 
-  if (workouts.length === 0) return <p>loading</p>;
+  const eachWorkoutEl = allWorkouts.map(el => <EachWorkout key={el.id} workout={el}/>)
 
   return (
     <>
@@ -30,6 +32,10 @@ export default function Workout() {
 
           <img className="top-image" src={bestWorkout.image} />
         </div>
+      </div>
+      
+      <div>
+        {eachWorkoutEl}
       </div>
     </>
   );

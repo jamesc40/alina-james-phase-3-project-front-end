@@ -38,6 +38,8 @@ function App() {
     return localUser ? JSON.parse(localUser) : {}
   });
 
+  const [error, setError] = useState('')
+
   const history = useHistory();
   let { pathname } = useLocation();
 
@@ -52,10 +54,14 @@ function App() {
       .then((r) => r.json())
       .then((data) => {
         if (data) {
+          setError('')
           dispatch({ type: 'login', payload: {user: data }})
           history.push(`/user/${data.id}`);
         }
-      });
+        else {
+          setError('Oops I did it again')
+        }
+      })
   };
 
   const handleSignUp = async (newUser) => {
@@ -68,7 +74,6 @@ function App() {
     })
       .then((r) => r.json())
       .then((data) => {
-        console.log(data)
         if (data) {
           dispatch({ type: 'login', payload: {user: data }})
           history.push(`/user/${data.id}`);
@@ -91,6 +96,7 @@ function App() {
         </Route>
         <Route exact path="/login">
           <Login
+            error={error}
             handleLogin={handleLogin}
           />
         </Route>
