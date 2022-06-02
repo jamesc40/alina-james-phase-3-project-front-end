@@ -6,6 +6,7 @@ body {
 
 .App {
   text-align: center;
+  font-family: "Comfortaa", cursive;
 }
 
 .login-form {
@@ -78,24 +79,22 @@ body {
 
 .profile-info {
   margin-top: 5vh;
+  margin-bottom: 5vh;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
 }
 
-.each-exercise {
+/* .each-exercise {
   margin-bottom: 2vh;
   display: flex;
 
   justify-content: space-around;
-}
-.each-exercise-img {
-  max-width: 14vh;
-  margin-right: 3vh;
-}
-.each-exercise-info {
+} */
+
+/* .each-exercise-info {
   text-align: left;
-}
+} */
 .top-info {
   display: flex;
   align-items: center;
@@ -103,4 +102,13 @@ body {
 }
 .top-image {
   max-width: 16vh;
+}
+.workout-image {
+  width: 100%;
+  height: 80%;
+}
+
+.exercise-img {
+  width: 100%;
+  height: 70%;
 }
