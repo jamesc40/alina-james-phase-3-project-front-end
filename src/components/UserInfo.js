@@ -6,10 +6,10 @@ import NewExerciseForm from "./NewExerciseForm";
 function UserInfo({ userId }) {
   const [user, setUser] = useState(undefined);
   const { id } = useParams();
-  
+
   useEffect(() => {
-    userId.current = id
-  }, [id])
+    userId.current = id;
+  }, [id]);
 
   useEffect(() => {
     fetch(`http://localhost:9292/user/${id}`)
@@ -18,7 +18,7 @@ function UserInfo({ userId }) {
   }, [id]);
 
   if (user === undefined) return <h1>loading</h1>;
-  
+
   return (
     <div>
       <div className="profile-greeting">
@@ -26,7 +26,7 @@ function UserInfo({ userId }) {
         <h2 className="greeting-user">Hi, {user.user.name}</h2>
       </div>
       <div className="profile-info">
-        <UserExercises exercise={user.exercises} />
+        <UserExercises user={user} />
         <NewExerciseForm id={id} />
       </div>
     </div>

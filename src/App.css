@@ -96,3 +96,11 @@ body {
 .each-exercise-info {
   text-align: left;
 }
+.top-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.top-image {
+  max-width: 16vh;
+}

@@ -1,20 +1,22 @@
 import React from "react";
 
-function Exercise({ eachExercise }) {
-  console.log(eachExercise);
-  const { date, difficulty, duration, workout_id } = eachExercise;
+function Exercise({ workouts, exercise }) {
+  // console.log(eachExercise);
+  
+  console.log(workouts)
+  console.log(exercise)
 
   return (
     <div className="each-exercise">
       <img
         className="each-exercise-img"
-        src="https://caloriesburnedhq.com/img/biking-distance-300x300.jpg"
+        src={workouts.image}
       />
       <div className="each-exercise-info">
-        <p>{date}</p>
-        <h2>{workout_id}</h2>
-        <p>Duration: {duration} minutes</p>
-        <p>Difficulty: {difficulty}</p>
+        <p></p>
+        <h2>{workouts.workout_type}</h2>
+        <p>Duration: {exercise.duration} minutes</p>
+        <p>Difficulty: {exercise.difficulty}</p>
       </div>
     </div>
   );

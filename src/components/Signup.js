@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 
-function Signup({ loggedIn, handleLogin }) {
+function Signup({ loggedIn, handleLogin, user, setUser, handleSignUp }) {
   const [form, setForm] = useState({
     name: "",
     image: "",
@@ -17,20 +17,25 @@ function Signup({ loggedIn, handleLogin }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    fetch("http://localhost:9292/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(form),
-    })
-      .then((r) => r.json())
-      .then((data) => {
-        if (data) {
-          history.push(`/user/${data}`);
-        }
-      });
-    handleLogin()
+
+    const newUser = {
+      name: form.name,
+      image: form.image,
+      username: form.username,
+      password: form.password,
+    };
+
+    if (
+      form.name === "" ||
+      form.password === "" ||
+      form.image === "" ||
+      form.username === ""
+    ) {
+      alert("Please enter all the information");
+    } else {
+      handleSignUp(newUser);
+    }
+    // handleLogin()
   }
 
   return (
