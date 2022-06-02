@@ -59,7 +59,7 @@ function App() {
   };
 
   const handleSignUp = async (newUser) => {
-    fetch(`${user}/signup`, {
+    fetch(`${URL}/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

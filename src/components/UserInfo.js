@@ -14,11 +14,6 @@ function UserInfo({ id }) {
 
   if (info === undefined) return <h1>loading</h1>;
 
-
-  //let someExercises = info.exercises
-  //let newExercises = [...someExercises, 'adsfasdf']
-  //let newInfo = {...info, exercises: newExercises }
-
   const handleAddExercise = ({ exercise, workout }) => {
     let exercises = info.exercises
     let workouts = info.workouts
@@ -30,7 +25,7 @@ function UserInfo({ id }) {
   return (
     <div>
       <div className="profile-greeting">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrsKE0n1Wa70pdYeKKIiJonNcU-fuNEV0nuw&usqp=CAU" />
+        <img src={info.user.image}/>
         <h2 className="greeting-user">Hi, {info.user.name}</h2>
       </div>
       <div className="profile-info">
