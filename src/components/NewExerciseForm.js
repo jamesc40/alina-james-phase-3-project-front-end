@@ -20,13 +20,15 @@ function NewExerciseForm({ id }) {
       workout_type: form.workout_type,
     };
 
-    fetch("http://localhost:9292/new", {
+    fetch("http://localhost:9292/exercise/new", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(newExercise),
-    }).then((r) => r.json());
+    });
+    //   .then((r) => r.json())
+    //   .then((d) => console.log(d));
 
     setForm({
       workout_type: "",

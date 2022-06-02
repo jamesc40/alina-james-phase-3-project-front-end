@@ -1,13 +1,14 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+// import { useHistory } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 
-function Login({ loggedIn, handleLogin }) {
+function Login({ loggedIn, handleLogin, handleSub }) {
   const [form, setForm] = useState({
     username: "",
     password: "",
   });
-  const history = useHistory();
+
+  // const history = useHistory();
 
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -15,21 +16,35 @@ function Login({ loggedIn, handleLogin }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    fetch("http://localhost:9292/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(form),
-    })
-      .then((r) => r.json())
-      .then((data) => {
-        if (data) {
-          history.push(`/user/${data}`);
-        }
-      });
-    handleLogin()
+    const userLogged = {
+      username: form.username,
+      password: form.password,
+    };
+
+    if (form.password === "" || form.username === "") {
+      alert("Please enter correct Username and Password");
+    } else {
+      handleSub(e, userLogged);
+    }
   }
+
+  // function handleSubmit(e) {
+  //   e.preventDefault();
+  //   fetch("http://localhost:9292/login", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(form),
+  //   })
+  //     .then((r) => r.json())
+  //     .then((data) => {
+  //       if (data) {
+  //         history.push(`/user/${data}`);
+  //       }
+  //     });
+  //   handleLogin()
+  // }
 
   return (
     <div>

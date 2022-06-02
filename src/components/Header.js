@@ -2,9 +2,9 @@ import React from "react";
 import { Navbar, Container, Offcanvas, Nav } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 
-function Header({ loggedIn, handleLogout }) {
-  const handleClick = () => handleLogout()
-
+function Header({ loggedIn, handleLogout, user }) {
+  const handleClick = () => handleLogout();
+  console.log(user);
   return (
     <>
       {[false].map((expand) => (
@@ -25,7 +25,12 @@ function Header({ loggedIn, handleLogout }) {
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
-                  <LinkContainer to="/" exact>
+                  {user ? (
+                    <LinkContainer to={"/user/" + user.id} exact>
+                      <Nav.Link href="#action1">Home</Nav.Link>
+                    </LinkContainer>
+                  ) : null}
+                  <LinkContainer to="/workouts" exact>
                     <Nav.Link href="#action1">Workouts</Nav.Link>
                   </LinkContainer>
                   <LinkContainer to="/update" exact>

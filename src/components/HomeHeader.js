@@ -15,6 +15,12 @@ function HomeHeader() {
             <Nav.Link href="#home">Log In</Nav.Link>
           </Nav>
         </LinkContainer>
+
+        <LinkContainer to="/workouts" exact>
+          <Nav className="me-auto">
+            <Nav.Link href="#home">Workouts</Nav.Link>
+          </Nav>
+        </LinkContainer>
       </Container>
     </Navbar>
   );
