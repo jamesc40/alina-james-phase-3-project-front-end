@@ -1,15 +1,13 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 
-function Signup({ loggedIn, handleLogin, user, setUser, handleSignUp }) {
+function Signup({ handleSignUp }) {
   const [form, setForm] = useState({
     name: "",
     image: "",
     username: "",
     password: "",
   });
-  const history = useHistory();
 
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -35,7 +33,6 @@ function Signup({ loggedIn, handleLogin, user, setUser, handleSignUp }) {
     } else {
       handleSignUp(newUser);
     }
-    // handleLogin()
   }
 
   return (

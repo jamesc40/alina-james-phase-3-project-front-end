@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { Form, Button } from "react-bootstrap";
 import { URL } from './App'
 
-function ManageAccount({ id }) {
+function ManageAccount({ id, dispatch }) {
   const [form, setForm] = useState({
     username: "",
     password: "",
@@ -11,9 +11,7 @@ function ManageAccount({ id }) {
 
   let history = useHistory()
 
-  let userURL = `${URL}/user/${id.current}`
-
-  console.log(id)
+  let userURL = `${URL}/user/${id}`
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -29,13 +27,16 @@ function ManageAccount({ id }) {
       username: "",
       password: "",
     });
+
+    history.push('/')
   }
 
   function handleClick() {
     fetch(userURL, {
       method: "DELETE",
     })
-    history.push('/')
+    dispatch({ type: 'delete' })
+    history.push(`/user/${id}`)
   }
 
   function handleChange(e) {
@@ -54,7 +55,6 @@ function ManageAccount({ id }) {
             type="text"
             placeholder="Enter username"
           />
-          {/* <Form.Text className="text-muted"></Form.Text> */}
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">

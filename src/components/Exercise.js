@@ -1,11 +1,6 @@
 import React from "react";
 
 function Exercise({ workouts, exercise }) {
-  // console.log(eachExercise);
-  
-  console.log(workouts)
-  console.log(exercise)
-
   return (
     <div className="each-exercise">
       <img
