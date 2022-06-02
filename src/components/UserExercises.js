@@ -6,7 +6,7 @@ function UserExercises({ user }) {
   const {exercises, workouts} = user
 
   const mapArr = exercises.map((el,i) => {
-    return <Exercise  workouts={workouts[i]} exercise={el} />
+    return <Exercise key={el.id} workouts={workouts[i]} exercise={el} />
   })
 
   return <div>{mapArr}</div>;
