@@ -2,9 +2,8 @@ import React from "react";
 import { Navbar, Container, Offcanvas, Nav } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 
-function Header({ loggedIn, handleLogout, user }) {
-  const handleClick = () => handleLogout();
-  console.log(user);
+function Header({ dispatch , user }) {
+  const handleClick = () => dispatch( { type: 'logout' });
   return (
     <>
       {[false].map((expand) => (

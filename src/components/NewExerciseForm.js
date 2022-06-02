@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { Form, Button, Col, Row } from "react-bootstrap";
 
-function NewExerciseForm({ id }) {
+function NewExerciseForm({ id, handleAddExercise }) {
   const [form, setForm] = useState({
     workout_type: "",
     date: "",
     difficulty: "",
     duration: "",
   });
-  console.log(id);
+
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -26,9 +26,9 @@ function NewExerciseForm({ id }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(newExercise),
-    });
-    //   .then((r) => r.json())
-    //   .then((d) => console.log(d));
+    })
+    .then(r => r.json())
+    .then(data => handleAddExercise(data))
 
     setForm({
       workout_type: "",

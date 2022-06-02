@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
-// import { useHistory } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 
-function Login({ loggedIn, handleLogin, handleSub }) {
+function Login({ handleLogin }) {
   const [form, setForm] = useState({
     username: "",
     password: "",
   });
-
-  // const history = useHistory();
 
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -24,27 +21,9 @@ function Login({ loggedIn, handleLogin, handleSub }) {
     if (form.password === "" || form.username === "") {
       alert("Please enter correct Username and Password");
     } else {
-      handleSub(e, userLogged);
+      handleLogin(userLogged)
     }
   }
-
-  // function handleSubmit(e) {
-  //   e.preventDefault();
-  //   fetch("http://localhost:9292/login", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(form),
-  //   })
-  //     .then((r) => r.json())
-  //     .then((data) => {
-  //       if (data) {
-  //         history.push(`/user/${data}`);
-  //       }
-  //     });
-  //   handleLogin()
-  // }
 
   return (
     <div>

@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useReducer, useState, useEffect } from "react";
 import {
   Redirect,
   Route,
@@ -18,48 +18,48 @@ import Workout from "./Workout";
 
 export const URL = "http://localhost:9292";
 
+const reducer = (user, action) => {
+  switch (action.type) {
+    case 'login':
+      localStorage.setItem("user", JSON.stringify(action.payload.user));
+      return action.payload.user
+    case 'logout':
+      localStorage.clear();
+      return {}
+    case 'delete':
+      localStorage.clear();
+      return {}
+  }
+}
+
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
-  //const loggedIn = useRef(false)
-  const userId = useRef(undefined);
+  const [user, dispatch] = useReducer(reducer, {}, () => {
+    const localUser = localStorage.getItem("user")
+    return localUser ? JSON.parse(localUser) : {}
+  });
+
+  const history = useHistory();
   let { pathname } = useLocation();
 
-  const [user, setUser] = useState();
-  const history = useHistory();
-
-  useEffect(() => {
-    const loggedInUser = localStorage.getItem("user");
-    console.log(loggedInUser);
-    if (loggedInUser) {
-      const foundUser = JSON.parse(loggedInUser);
-      console.log(foundUser);
-      setUser(foundUser);
-    }
-  }, []);
-
-  console.log(user);
-  const handleSub = async (e, userLogged) => {
-    fetch("http://localhost:9292/login", {
+  const handleLogin = async (userInfo) => {
+    fetch(`${URL}/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(userLogged),
+      body: JSON.stringify(userInfo),
     })
       .then((r) => r.json())
       .then((data) => {
         if (data) {
-          setUser(data);
-          localStorage.setItem("user", JSON.stringify(data));
-          console.log(data);
-          console.log(localStorage);
+          dispatch({ type: 'login', payload: {user: data }})
           history.push(`/user/${data.id}`);
         }
       });
-    handleLogin(localStorage);
   };
+
   const handleSignUp = async (newUser) => {
-    fetch("http://localhost:9292/signup", {
+    fetch(`${user}/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -68,56 +68,42 @@ function App() {
     })
       .then((r) => r.json())
       .then((data) => {
+        console.log(data)
         if (data) {
-          console.log(data);
-          localStorage.setItem("user", JSON.stringify(data));
+          dispatch({ type: 'login', payload: {user: data }})
           history.push(`/user/${data.id}`);
-          setUser(data);
         }
       });
   };
-
-  const handleLogin = () => setLoggedIn(true);
-  // const handleLogout = () => setLoggedIn(false);
-
-  function handleLogout() {
-    setUser();
-    localStorage.clear();
-  }
 
   return (
     <div className="App">
       {pathname === "/" || pathname === "/login" || pathname === "/signup" ? (
         <HomeHeader />
       ) : (
-        <Header user={user} loggedIn={loggedIn} handleLogout={handleLogout} />
+        <Header user={user} dispatch={dispatch} />
       )}
       <Switch>
         <Route exact path="/">
-          {!user ? <HomePage /> : <Redirect to={"/user/" + user.id} />}
-          {/* {!loggedIn.current ? <HomePage /> : null} */}
+          {Object.keys(user).length !== 0 ? 
+            <Redirect to={"/user/" + user.id} /> : <HomePage /> 
+          }
         </Route>
         <Route exact path="/login">
           <Login
-            loggedin={loggedIn}
             handleLogin={handleLogin}
-            handleSub={handleSub}
           />
         </Route>
         <Route exact path="/signup">
           <Signup
-            user={user}
-            setUser={setUser}
-            loggedIn={loggedIn}
-            handleLogin={handleLogin}
             handleSignUp={handleSignUp}
           />
         </Route>
         <Route path="/user/:id">
-          {user ? <UserInfo userId={userId} /> : <Redirect to="/" />}
+          {user ? <UserInfo id={user.id} /> : <Redirect to="/" />}
         </Route>
         <Route exact path="/update">
-          <ManageAccount id={userId} />
+          <ManageAccount id={user.id} dispatch={dispatch}/>
         </Route>
         <Route exact path="/workouts">
           <Workout />
