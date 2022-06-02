@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
-import EachWorkout from './EachWorkout'
+import EachWorkout from "./EachWorkout";
+import map from "lodash/map";
+import range from "lodash/range";
 
 export default function Workout() {
   const [workouts, setWorkouts] = useState(undefined);
@@ -16,7 +18,9 @@ export default function Workout() {
   const bestWorkout = workouts.most_popular_workout;
   const allWorkouts = workouts.workouts;
 
-  const eachWorkoutEl = allWorkouts.map(el => <EachWorkout key={el.id} workout={el}/>)
+  const eachWorkoutEl = allWorkouts.map((el) => (
+    <EachWorkout key={el.id} workout={el} />
+  ));
 
   return (
     <>
@@ -33,9 +37,8 @@ export default function Workout() {
           <img className="top-image" src={bestWorkout.image} />
         </div>
       </div>
-      
-      <div>
-        {eachWorkoutEl}
+      <div style={{ width: "100%", overflow: "auto", display: "flex" }}>
+        {map(range(1), (_) => eachWorkoutEl)}
       </div>
     </>
   );
