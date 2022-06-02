@@ -13,6 +13,7 @@ function Login({ error, handleLogin }) {
 
   function handleSubmit(e) {
     e.preventDefault();
+
     const userLogged = {
       username: form.username,
       password: form.password,

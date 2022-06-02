@@ -1,14 +1,17 @@
 import { useState } from "react";
 import { Form, Button, Col, Row } from "react-bootstrap";
+import { addExercise } from './crud'
 
-function NewExerciseForm({ id, handleAddExercise }) {
-  const [form, setForm] = useState({
-    workout_type: "",
+const emptyObj = {
+ workout_type: "",
     date: "",
     difficulty: "",
     duration: "",
-  });
+  }
 
+function NewExerciseForm({ id, handleAddExercise }) {
+  const [form, setForm] = useState({...emptyObj})
+    
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -20,22 +23,9 @@ function NewExerciseForm({ id, handleAddExercise }) {
       workout_type: form.workout_type,
     };
 
-    fetch("http://localhost:9292/exercise/new", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newExercise),
-    })
-    .then(r => r.json())
-    .then(data => handleAddExercise(data))
+    addExercise(newExercise).then(data => handleAddExercise(data))
 
-    setForm({
-      workout_type: "",
-      date: "",
-      difficulty: "",
-      duration: "",
-    });
+    setForm({...emptyObj})
   }
 
   function handleChange(e) {

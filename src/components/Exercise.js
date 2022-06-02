@@ -8,7 +8,6 @@ function Exercise({ workouts, exercise }) {
         src={workouts.image}
       />
       <div className="each-exercise-info">
-        <p></p>
         <h2>{workouts.workout_type}</h2>
         <p>Duration: {exercise.duration} minutes</p>
         <p>Difficulty: {exercise.difficulty}</p>

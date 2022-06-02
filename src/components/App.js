@@ -15,8 +15,8 @@ import Header from "./Header";
 import HomeHeader from "./HomeHeader";
 import ManageAccount from "./ManageAccount";
 import Workout from "./Workout";
+import { login, signup } from './crud'
 
-export const URL = "http://localhost:9292";
 
 const reducer = (user, action) => {
   switch (action.type) {
@@ -43,16 +43,8 @@ function App() {
   const history = useHistory();
   let { pathname } = useLocation();
 
-  const handleLogin = async (userInfo) => {
-    fetch(`${URL}/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userInfo),
-    })
-      .then((r) => r.json())
-      .then((data) => {
+  const handleLogin = (userInfo) => {
+    login(userInfo).then((data) => {
         if (data) {
           setError('')
           dispatch({ type: 'login', payload: {user: data }})
@@ -62,18 +54,10 @@ function App() {
           setError('Oops I did it again')
         }
       })
-  };
+  }
 
-  const handleSignUp = async (newUser) => {
-    fetch(`${URL}/signup`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newUser),
-    })
-      .then((r) => r.json())
-      .then((data) => {
+  const handleSignUp = (newUser) => {
+    signup(newUser).then((data) => {
         if (data) {
           dispatch({ type: 'login', payload: {user: data }})
           history.push(`/user/${data.id}`);
@@ -106,7 +90,7 @@ function App() {
           />
         </Route>
         <Route path="/user/:id">
-          {user ? <UserInfo id={user.id} /> : <Redirect to="/" />}
+          {Object.keys(user).length !== 0 ? <UserInfo id={user.id} /> : <Redirect to="/" />}
         </Route>
         <Route exact path="/update">
           <ManageAccount id={user.id} dispatch={dispatch}/>
