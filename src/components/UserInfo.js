@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import UserExercises from "./UserExercises.js";
 import NewExerciseForm from "./NewExerciseForm";
+import UserActivity from './UserActivity'
 
 function UserInfo({ id }) {
   const [info, setInfo] = useState(undefined);
@@ -30,7 +31,10 @@ function UserInfo({ id }) {
       </div>
       <div className="profile-info">
         <UserExercises user={info} />
-        <NewExerciseForm id={id} handleAddExercise={handleAddExercise}/>
+        <div>
+          <UserActivity user={info} />
+          <NewExerciseForm id={id} handleAddExercise={handleAddExercise}/>
+        </div>
       </div>
     </div>
   );
