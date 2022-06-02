@@ -24,7 +24,7 @@ function Header({ dispatch , user }) {
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
-                  {user ? (
+                  {Object.keys(user).length !== 0 ? (
                     <LinkContainer to={"/user/" + user.id} exact>
                       <Nav.Link href="#action1">Home</Nav.Link>
                     </LinkContainer>

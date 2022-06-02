@@ -14,13 +14,18 @@ function UserInfo({ id }) {
 
   if (info === undefined) return <h1>loading</h1>;
 
-  const handleAddExercise = ({ exercise, workout }) => {
-    let exercises = info.exercises;
-    let workouts = info.workouts;
-    let newExercises = [...exercises, exercise];
-    let newWorkouts = [...workouts, workout];
-    setInfo({ ...info, exercises: newExercises, workouts: newWorkouts });
-  };
+  const handleAddExercise = ({ exercise, workout, total_exercises, total_minutes }) => {
+    let exercises = info.exercises
+    let workouts = info.workouts
+    let newExercises = [...exercises, exercise]
+    let newWorkouts = [...workouts, workout]
+    setInfo({ ...info, 
+      exercises: newExercises, 
+      workouts: newWorkouts, 
+      total_exercises: total_exercises,
+      total_minutes: total_minutes
+    })
+  }
 
   return (
     <div>

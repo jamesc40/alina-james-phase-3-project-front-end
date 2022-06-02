@@ -1,42 +1,32 @@
 import { useState } from "react";
 import { useHistory } from 'react-router-dom'
 import { Form, Button } from "react-bootstrap";
-import { URL } from './App'
+import { editUser, deleteUser } from './crud'
+
+const emptyObj = { username: "", password: "" }
 
 function ManageAccount({ id, dispatch }) {
-  const [form, setForm] = useState({
-    username: "",
-    password: "",
-  });
-
+  const [form, setForm] = useState({...emptyObj})
+   
   let history = useHistory()
-
-  let userURL = `${URL}/user/${id}`
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    fetch(userURL, {
-      method: 'PATCH',
-      headers: {
-        'content-type': 'application/json'
-      }, body: JSON.stringify(form)
-    })
+    editUser(id, form)
 
-    setForm({
-      username: "",
-      password: "",
-    });
+    setForm({...emptyObj})
 
-    history.push('/')
+    history.push(`/user/${id}`)
   }
 
   function handleClick() {
-    fetch(userURL, {
-      method: "DELETE",
-    })
+
+    deleteUser(id) 
+
     dispatch({ type: 'delete' })
-    history.push(`/user/${id}`)
+    history.push('/')
+
   }
 
   function handleChange(e) {
