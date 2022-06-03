@@ -36,7 +36,7 @@ function Signup({ handleSignUp }) {
   }
 
   return (
-    <div>
+    <div className="log-sign-page">
       <Form className="login-form  login-text" onSubmit={handleSubmit}>
         <Form.Group className="mb-3">
           <Form.Label>First Name</Form.Label>
