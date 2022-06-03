@@ -7,6 +7,7 @@ function Signup({ handleSignUp }) {
     image: "",
     username: "",
     password: "",
+    confirm_password: "",
   });
 
   function handleChange(e) {
@@ -27,7 +28,8 @@ function Signup({ handleSignUp }) {
       form.name === "" ||
       form.password === "" ||
       form.image === "" ||
-      form.username === ""
+      form.username === "" ||
+      form.password !== form.confirm_password
     ) {
       alert("Please enter all the information");
     } else {
@@ -80,6 +82,17 @@ function Signup({ handleSignUp }) {
           />
         </Form.Group>
 
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>Confirm Password</Form.Label>
+          <Form.Control
+            type="password"
+            placeholder="Password"
+            name="confirm_password"
+            onChange={handleChange}
+            value={form.confirm_password}
+            id={form.password !== form.confirm_password ? "no-match" : "match"}
+          />
+        </Form.Group>
         <Button className="login-btn" variant="primary" type="submit">
           Sign Up
         </Button>
