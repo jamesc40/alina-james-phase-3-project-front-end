@@ -151,14 +151,35 @@ body {
   background-color: #fff;
 }
 .delete-button {
-  margin-left: 2vh;
+  width: 100%;
 }
 .all-btn {
-  background-color: #8886ff;
+  background-color: #9b99ff;
   border: none;
   margin-top: 2vh;
   padding: 10px 24px;
   border-radius: 60px;
+}
+#delete {
+  margin-left: -4vh;
+  width: 90%;
+  color: #fff;
+  transition: all ease-in-out 0.2s;
+}
+#delete:hover {
+  background-color: rgb(27, 129, 255);
+  transition: all ease-in-out 0.2s;
+}
+
+#man-account {
+  width: 100%;
+  color: #fff;
+  transition: all ease-in-out 0.2s;
+}
+
+#man-account:hover {
+  background-color: rgb(27, 129, 255);
+  transition: all ease-in-out 0.2s;
 }
 
 .login-btn {
@@ -297,4 +318,12 @@ button:hover .button-text {
   width: 10vh;
   height: 10vh;
   background-color: transparent;
+}
+#no-match {
+  color: red;
+  border: 1.8px solid red;
+}
+
+.personal-workouts {
+  margin-bottom: 4vh;
 }

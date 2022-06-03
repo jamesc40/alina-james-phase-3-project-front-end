@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 import { editUser, deleteUser } from "./crud";
 
-const emptyObj = { username: "", password: "" };
+const emptyObj = { username: "", password: "", confirm_password: "" };
 
 function ManageAccount({ id, dispatch }) {
   const [form, setForm] = useState({ ...emptyObj });
@@ -13,16 +13,23 @@ function ManageAccount({ id, dispatch }) {
   function handleSubmit(e) {
     e.preventDefault();
 
-    editUser(id, form);
+    if (
+      form.password !== form.confirm_password ||
+      form.username === "" ||
+      form.password === "" ||
+      form.confirm_password === ""
+    ) {
+      alert("Please enter correct information");
+    } else {
+      editUser(id, form);
 
+      history.push(`/user/${id}`);
+    }
     setForm({ ...emptyObj });
-
-    history.push(`/user/${id}`);
   }
 
   function handleClick() {
     deleteUser(id);
-
     dispatch({ type: "delete" });
     history.push("/");
   }
@@ -35,7 +42,7 @@ function ManageAccount({ id, dispatch }) {
     <div className="manage-account">
       <Form className="manage-acc-form" onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>New Name</Form.Label>
+          <Form.Label>New Username</Form.Label>
           <Form.Control
             onChange={handleChange}
             name="username"
@@ -56,16 +63,38 @@ function ManageAccount({ id, dispatch }) {
           />
         </Form.Group>
 
-        <Button className="all-btn" variant="primary" type="submit">
-          Save
-        </Button>
-        <Button
-          className="delete-button all-btn"
-          onClick={handleClick}
-          variant="primary"
-        >
-          Delete Account
-        </Button>
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>Confirm New Password</Form.Label>
+          <Form.Control
+            onChange={handleChange}
+            name="confirm_password"
+            value={form.confirm_password}
+            type="password"
+            placeholder="Password"
+            id={form.password !== form.confirm_password ? "no-match" : "match"}
+          />
+        </Form.Group>
+
+        <Form.Group>
+          <Button
+            className="all-btn"
+            variant="primary"
+            type="submit"
+            id="man-account"
+          >
+            Save
+          </Button>
+        </Form.Group>
+        <Form.Group>
+          <Button
+            className="all-btn"
+            onClick={handleClick}
+            variant="primary"
+            id="man-account"
+          >
+            Delete Account
+          </Button>
+        </Form.Group>
       </Form>
     </div>
   );
