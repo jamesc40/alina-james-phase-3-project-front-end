@@ -3,6 +3,7 @@ import UserExercises from "./UserExercises.js";
 import NewExerciseForm from "./NewExerciseForm";
 import UserActivity from "./UserActivity";
 import { getInfo } from './crud'
+import { Spinner } from "react-bootstrap";
 
 function UserInfo({ id }) {
   const [info, setInfo] = useState(undefined);
@@ -11,7 +12,8 @@ function UserInfo({ id }) {
     getInfo(id).then((data) => setInfo(data));
   }, [id]);
 
-  if (info === undefined) return <h1>loading</h1>;
+  if (info === undefined)
+    return <Spinner id="loading" animation="border" variant="light" />;
 
   const handleAddExercise = ({
     exercise,
@@ -33,7 +35,7 @@ function UserInfo({ id }) {
   };
 
   return (
-    <div className="personal-page">
+    <div className="UserInfo">
       <div className="user">
         <div className="profile-greeting">
           <img className="user-img" src={info.user.image} />

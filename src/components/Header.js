@@ -5,12 +5,12 @@ import { LinkContainer } from "react-router-bootstrap";
 function Header({ dispatch, user }) {
   const handleClick = () => dispatch({ type: "logout" });
   return (
-    <>
+    <div id="main-nav">
       {[false].map((expand) => (
         <Navbar key={expand} bg="light" expand={expand} className="mb-3">
           <Container fluid className="nav-bar-main">
             <LinkContainer to="/" exact>
-              <Navbar.Brand className="nav-l-main">MyFitnessPal</Navbar.Brand>
+              <Navbar.Brand id="nav-l-main">MyFitnessPal</Navbar.Brand>
             </LinkContainer>
             {Object.keys(user).length !== 0 ?
               <>
@@ -51,7 +51,7 @@ function Header({ dispatch, user }) {
           </Container>
         </Navbar>
       ))}
-    </>
+    </div>
   );
 }
 

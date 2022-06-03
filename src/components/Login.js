@@ -32,7 +32,7 @@ function Login({ error, handleLogin }) {
       <Form className="login-form" onSubmit={handleSubmit}>
         <Form.Label className="login-greet">Welcome back!</Form.Label>
         <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Username</Form.Label>
+          <Form.Label className="login-text">Username</Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter username"
@@ -43,7 +43,7 @@ function Login({ error, handleLogin }) {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
+          <Form.Label className="login-text">Password</Form.Label>
           <Form.Control
             type="password"
             placeholder="Password"
