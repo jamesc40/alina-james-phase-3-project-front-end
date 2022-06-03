@@ -80,7 +80,7 @@ function Signup({ handleSignUp }) {
           />
         </Form.Group>
 
-        <Button variant="primary" type="submit">
+        <Button className="login-btn" variant="primary" type="submit">
           Sign Up
         </Button>
       </Form>

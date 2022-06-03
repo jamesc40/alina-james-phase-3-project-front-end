@@ -22,14 +22,15 @@ function Login({ error, handleLogin }) {
     if (form.password === "" || form.username === "") {
       alert("Please enter correct Username and Password");
     } else {
-      handleLogin(userLogged)
+      handleLogin(userLogged);
     }
   }
 
   return (
     <div>
-      {error.length > 0 ? <p className='mx-3'> {error} </p> : null} 
+      {error.length > 0 ? <p className="mx-3"> {error} </p> : null}
       <Form className="login-form" onSubmit={handleSubmit}>
+        <Form.Label className="login-greet">Welcome back!</Form.Label>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Username</Form.Label>
           <Form.Control
@@ -52,7 +53,7 @@ function Login({ error, handleLogin }) {
           />
         </Form.Group>
 
-        <Button variant="primary" type="submit">
+        <Button className="login-btn" variant="primary" type="submit">
           Log In
         </Button>
       </Form>

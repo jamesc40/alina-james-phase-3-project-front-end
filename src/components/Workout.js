@@ -24,21 +24,23 @@ export default function Workout() {
 
   return (
     <>
+      <div className="workout-container">
+        <h2>All Workouts</h2>
+        <div style={{ width: "100%", overflow: "auto", display: "flex" }}>
+          {map(range(1), (_) => eachWorkoutEl)}
+        </div>
+      </div>
       <div className="top-info">
         <div>
           <h5>Top user</h5>
-          <h3>{bestUser.name}</h3>
           <img className="top-image" src={bestUser.image} />
+          <h3>{bestUser.name}</h3>
         </div>
         <div>
-          <h5>The most popular workout</h5>
-          <h3> {bestWorkout.workout_type}</h3>
-
+          <h5>Most popular workout</h5>
           <img className="top-image" src={bestWorkout.image} />
+          <h3> {bestWorkout.workout_type}</h3>
         </div>
-      </div>
-      <div style={{ width: "100%", overflow: "auto", display: "flex" }}>
-        {map(range(1), (_) => eachWorkoutEl)}
       </div>
     </>
   );

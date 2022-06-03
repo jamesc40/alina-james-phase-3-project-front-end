@@ -9,7 +9,7 @@ function Exercise({ workouts, exercise }) {
     <Paper
       style={{
         marginRight: "3vh",
-        height: "46vh",
+        height: "70vh",
         width: "35vh",
         border: "",
         border: "1px solid #BFBFBF",
@@ -17,10 +17,12 @@ function Exercise({ workouts, exercise }) {
       }}
     >
       <img className="exercise-img" src={workouts.image} />
-      <p>{exercise.date}</p>
-      <h2>{workouts.workout_type}</h2>
-      <p>Duration: {exercise.duration} minutes</p>
-      <p>Difficulty: {exercise.difficulty}</p>
+      <div className="exercise-info">
+        <p>{exercise.date}</p>
+        <h2>{workouts.workout_type}</h2>
+        <p>Duration: {exercise.duration} minutes</p>
+        <p>Difficulty: {exercise.difficulty}</p>
+      </div>
     </Paper>
   );
 }
