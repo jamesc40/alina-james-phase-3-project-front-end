@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import UserExercises from "./UserExercises.js";
 import NewExerciseForm from "./NewExerciseForm";
 import UserActivity from "./UserActivity";
-import { getInfo } from './crud'
+import { getInfo } from "./crud";
 import { Spinner } from "react-bootstrap";
 
 function UserInfo({ id }) {
@@ -13,7 +13,7 @@ function UserInfo({ id }) {
   }, [id]);
 
   if (info === undefined)
-    return <Spinner id="loading" animation="border" variant="light" />;
+    return <Spinner id="loading" animation="border" variant="info" />;
 
   const handleAddExercise = ({
     exercise,
