@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import EachWorkout from "./EachWorkout";
 import map from "lodash/map";
 import range from "lodash/range";
+import { Spinner } from "react-bootstrap";
 
 export default function Workout() {
   const [workouts, setWorkouts] = useState(undefined);
@@ -12,7 +13,8 @@ export default function Workout() {
       .then((data) => setWorkouts(data));
   }, []);
 
-  if (workouts === undefined) return <p>loading</p>;
+  if (workouts === undefined)
+    return <Spinner id="loading" animation="border" variant="light" />;
 
   const bestUser = workouts.most_active_user;
   const bestWorkout = workouts.most_popular_workout;

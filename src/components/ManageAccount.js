@@ -32,7 +32,7 @@ function ManageAccount({ id, dispatch }) {
   }
 
   return (
-    <>
+    <div className="manage-account">
       <Form className="manage-acc-form" onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>New Name</Form.Label>
@@ -67,7 +67,7 @@ function ManageAccount({ id, dispatch }) {
           Delete Account
         </Button>
       </Form>
-    </>
+    </div>
   );
 }
 
