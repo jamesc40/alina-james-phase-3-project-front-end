@@ -47,7 +47,7 @@ export const deleteUser = (id) => {
 
 export const addExercise = (exercise) => {
   return (
-    fetch("http://localhost:9292/exercise/new", {
+    fetch("${URL}/exercise/new", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -55,5 +55,12 @@ export const addExercise = (exercise) => {
       body: JSON.stringify(exercise),
       })
       .then(r => r.json())
+  )
+}
+
+export const getInfo = (id) => {
+  return (
+    fetch(`${URL}/user/${id}`)
+      .then((r) => r.json())
   )
 }

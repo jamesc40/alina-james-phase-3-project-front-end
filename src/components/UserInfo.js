@@ -2,14 +2,13 @@ import React, { useState, useEffect } from "react";
 import UserExercises from "./UserExercises.js";
 import NewExerciseForm from "./NewExerciseForm";
 import UserActivity from "./UserActivity";
+import { getInfo } from './crud'
 
 function UserInfo({ id }) {
   const [info, setInfo] = useState(undefined);
 
   useEffect(() => {
-    fetch(`http://localhost:9292/user/${id}`)
-      .then((r) => r.json())
-      .then((data) => setInfo(data));
+    getInfo(id).then((data) => setInfo(data));
   }, [id]);
 
   if (info === undefined) return <h1>loading</h1>;
