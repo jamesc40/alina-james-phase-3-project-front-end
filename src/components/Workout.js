@@ -14,7 +14,7 @@ export default function Workout() {
   }, []);
 
   if (workouts === undefined)
-    return <Spinner id="loading" animation="border" variant="light" />;
+    return <Spinner id="loading" animation="border" variant="info" />;
 
   const bestUser = workouts.most_active_user;
   const bestWorkout = workouts.most_popular_workout;
