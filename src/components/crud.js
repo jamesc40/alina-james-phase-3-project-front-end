@@ -64,3 +64,11 @@ export const getInfo = (id) => {
       .then((r) => r.json())
   )
 }
+
+export const deleteExercise = (id) => {
+  return (
+    fetch(`${URL}/exercise/${id}`, {
+      method: 'DELETE'
+    })
+  )
+}

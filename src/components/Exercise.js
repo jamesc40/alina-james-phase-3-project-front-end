@@ -1,9 +1,11 @@
 import React from "react";
 import { Paper } from "@material-ui/core";
 
-function Exercise({ workouts, exercise }) {
+function Exercise({ workouts, exercise, handleDeleteExercise }) {
 
   if(!workouts || !exercise) return null
+
+  const handleClick = () => handleDeleteExercise(exercise, workouts) 
 
   return (
     <Paper
@@ -23,6 +25,7 @@ function Exercise({ workouts, exercise }) {
         <p>Duration: {exercise.duration} minutes</p>
         <p>Difficulty: {exercise.difficulty}</p>
       </div>
+      <button onClick={handleClick}> delete </button>
     </Paper>
   );
 }
