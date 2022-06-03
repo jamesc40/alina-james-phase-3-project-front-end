@@ -27,7 +27,7 @@ function Login({ error, handleLogin }) {
   }
 
   return (
-    <div>
+    <div className="log-sign-page">
       {error.length > 0 ? <p className="mx-3"> {error} </p> : null}
       <Form className="login-form" onSubmit={handleSubmit}>
         <Form.Label className="login-greet">Welcome back!</Form.Label>

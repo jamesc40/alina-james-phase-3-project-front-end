@@ -13,7 +13,7 @@ function UserInfo({ id }) {
   }, [id]);
 
   if (info === undefined)
-    return <Spinner id="loading" animation="border" variant="light" />;
+    return <Spinner id="loading" animation="border" variant="info" />;
 
   const handleAddExercise = ({
     exercise,
