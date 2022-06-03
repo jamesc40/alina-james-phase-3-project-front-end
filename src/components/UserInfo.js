@@ -14,29 +14,37 @@ function UserInfo({ id }) {
 
   if (info === undefined) return <h1>loading</h1>;
 
-  const handleAddExercise = ({ exercise, workout, total_exercises, total_minutes }) => {
-    let exercises = info.exercises
-    let workouts = info.workouts
-    let newExercises = [...exercises, exercise]
-    let newWorkouts = [...workouts, workout]
-    setInfo({ ...info, 
-      exercises: newExercises, 
-      workouts: newWorkouts, 
+  const handleAddExercise = ({
+    exercise,
+    workout,
+    total_exercises,
+    total_minutes,
+  }) => {
+    let exercises = info.exercises;
+    let workouts = info.workouts;
+    let newExercises = [...exercises, exercise];
+    let newWorkouts = [...workouts, workout];
+    setInfo({
+      ...info,
+      exercises: newExercises,
+      workouts: newWorkouts,
       total_exercises: total_exercises,
-      total_minutes: total_minutes
-    })
-  }
+      total_minutes: total_minutes,
+    });
+  };
 
   return (
-    <div>
-      <div className="profile-greeting">
-        <img src={info.user.image} />
-        <h2 className="greeting-user">Hi, {info.user.name}</h2>
-      </div>
+    <div className="personal-page">
+      <div className="user">
+        <div className="profile-greeting">
+          <img className="user-img" src={info.user.image} />
+          <h2 className="greeting-user">Hi, {info.user.name}</h2>
+        </div>
 
-      <div className="profile-info">
-        <UserActivity user={info} />
-        <NewExerciseForm id={id} handleAddExercise={handleAddExercise} />
+        <div className="profile-info">
+          <UserActivity user={info} />
+          <NewExerciseForm id={id} handleAddExercise={handleAddExercise} />
+        </div>
       </div>
       <UserExercises user={info} />
     </div>

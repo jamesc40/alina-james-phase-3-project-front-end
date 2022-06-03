@@ -1,17 +1,17 @@
 import { useState } from "react";
 import { Form, Button, Col, Row } from "react-bootstrap";
-import { addExercise } from './crud'
+import { addExercise } from "./crud";
 
 const emptyObj = {
- workout_type: "",
-    date: "",
-    difficulty: "",
-    duration: "",
-  }
+  workout_type: "",
+  date: "",
+  difficulty: "",
+  duration: "",
+};
 
 function NewExerciseForm({ id, handleAddExercise }) {
-  const [form, setForm] = useState({...emptyObj})
-    
+  const [form, setForm] = useState({ ...emptyObj });
+
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -23,9 +23,9 @@ function NewExerciseForm({ id, handleAddExercise }) {
       workout_type: form.workout_type,
     };
 
-    addExercise(newExercise).then(data => handleAddExercise(data))
+    addExercise(newExercise).then((data) => handleAddExercise(data));
 
-    setForm({...emptyObj})
+    setForm({ ...emptyObj });
   }
 
   function handleChange(e) {
@@ -45,8 +45,14 @@ function NewExerciseForm({ id, handleAddExercise }) {
             <option>Choose...</option>
             <option>Run</option>
             <option>Swim</option>
-            <option>Weight lift</option>
+            <option>Weight Lift</option>
             <option>Bike</option>
+            <option>Yoga</option>
+            <option>Aerobic</option>
+            <option>Crossfit</option>
+            <option>Stretching</option>
+            <option>Dancing</option>
+            <option>Tennis</option>
           </Form.Select>
         </Form.Group>
 
@@ -88,7 +94,7 @@ function NewExerciseForm({ id, handleAddExercise }) {
         </Form.Group>
       </Row>
 
-      <Button variant="primary" type="submit">
+      <Button className="all-btn" variant="primary" type="submit">
         Submit
       </Button>
     </Form>

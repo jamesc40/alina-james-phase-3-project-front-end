@@ -1,32 +1,30 @@
 import { useState } from "react";
-import { useHistory } from 'react-router-dom'
+import { useHistory } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
-import { editUser, deleteUser } from './crud'
+import { editUser, deleteUser } from "./crud";
 
-const emptyObj = { username: "", password: "" }
+const emptyObj = { username: "", password: "" };
 
 function ManageAccount({ id, dispatch }) {
-  const [form, setForm] = useState({...emptyObj})
-   
-  let history = useHistory()
+  const [form, setForm] = useState({ ...emptyObj });
+
+  let history = useHistory();
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    editUser(id, form)
+    editUser(id, form);
 
-    setForm({...emptyObj})
+    setForm({ ...emptyObj });
 
-    history.push(`/user/${id}`)
+    history.push(`/user/${id}`);
   }
 
   function handleClick() {
+    deleteUser(id);
 
-    deleteUser(id) 
-
-    dispatch({ type: 'delete' })
-    history.push('/')
-
+    dispatch({ type: "delete" });
+    history.push("/");
   }
 
   function handleChange(e) {
@@ -35,7 +33,7 @@ function ManageAccount({ id, dispatch }) {
 
   return (
     <>
-      <Form onSubmit={handleSubmit}>
+      <Form className="manage-acc-form" onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>New Name</Form.Label>
           <Form.Control
@@ -58,10 +56,14 @@ function ManageAccount({ id, dispatch }) {
           />
         </Form.Group>
 
-        <Button variant="primary" type="submit">
+        <Button className="all-btn" variant="primary" type="submit">
           Save
         </Button>
-        <Button onClick={handleClick} variant="primary">
+        <Button
+          className="delete-button all-btn"
+          onClick={handleClick}
+          variant="primary"
+        >
           Delete Account
         </Button>
       </Form>
