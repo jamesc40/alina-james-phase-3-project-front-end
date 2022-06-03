@@ -1,0 +1,19 @@
+Technologies we used
+  Bootstrap
+  Material UI
+
+What did we disagree on
+  What to prioritize
+    I was focused on code organization and Alina wanted to do as much as we could in the given time.
+  Solution
+    We compromised
+
+Something that didn't go according to plan
+  Video Background
+  Our server responses ended up being a little more dynamic then we first planned
+
+Project Organization
+  Alina and I both did what we felt passionate about and filled in the gaps if we had downtime
+  We had two seperate branches on github that were seperated by person and we commited after major project milestones
+
+  
