@@ -1,4 +1,4 @@
-import { useReducer, useState, useEffect } from "react";
+import { useReducer, useState } from "react";
 import {
   Redirect,
   Route,
@@ -16,7 +16,6 @@ import HomeHeader from "./HomeHeader";
 import ManageAccount from "./ManageAccount";
 import Workout from "./Workout";
 import { login, signup } from './crud'
-
 
 const reducer = (user, action) => {
   switch (action.type) {

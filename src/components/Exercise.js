@@ -2,6 +2,9 @@ import React from "react";
 import { Paper } from "@material-ui/core";
 
 function Exercise({ workouts, exercise }) {
+
+  if(!workouts || !exercise) return null
+
   return (
     <Paper
       style={{
