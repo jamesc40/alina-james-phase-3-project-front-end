@@ -3,7 +3,8 @@ body {
   margin: 0;
   height: 100vh;
 }
-body {
+
+.App {
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
@@ -25,7 +26,9 @@ body {
 .App {
   text-align: center;
   font-family: "Montserrat", sans-serif;
-  color: white;
+}
+.UserInfo {
+  background-color: #fff;
 }
 
 .login-form {
@@ -38,8 +41,12 @@ body {
   max-width: 55vh;
 }
 .login-greet {
+  color: #fff;
   font-size: 4vh;
   margin-bottom: 4vh;
+}
+.login-text {
+  color: #fff;
 }
 .home-nav {
   margin-left: 0;
@@ -48,13 +55,18 @@ body {
 /* .nav-bar-main {
   margin-bottom: 0;
 } */
-
+#main-nav {
+  margin-bottom: -4vh;
+}
 .navbar-light .navbar-brand {
   color: #fff;
 }
 
 .navbar-light .navbar-nav .nav-link {
   color: #fff;
+}
+#nav-l-main {
+  color: black;
 }
 
 .home-name {
@@ -67,6 +79,7 @@ body {
 .profile-greeting {
   margin-top: 4vh;
   margin-left: 4vh;
+  padding-top: 4vh;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -118,20 +131,31 @@ body {
   height: 50%;
 }
 .manage-acc-form {
+  padding-top: 6vh;
   margin: 0 auto;
   max-width: 60vh;
+}
+.manage-account {
+  margin-top: -3vh;
+  height: 100vh;
+  background-color: #fff;
 }
 .delete-button {
   margin-left: 2vh;
 }
 .all-btn {
-  padding: 5px 20px;
+  background-color: #8886ff;
+  border: none;
+  margin-top: 2vh;
+  padding: 10px 24px;
   border-radius: 60px;
 }
 
 .login-btn {
-  padding: 5px 20px;
+  margin-top: 3vh;
+  padding: 10px 20px;
   border-radius: 60px;
+  width: 100%;
   border: none;
   background-color: rgba(255, 255, 255, 0.5);
 }
@@ -257,7 +281,10 @@ button:hover .button-text {
 .navbar-light .navbar-brand .nav-l-main {
   color: black;
 }
-.personal-page {
-  background-color: #fff;
-  margin-top: -4vh;
+
+#loading {
+  margin-top: 20vh;
+  width: 10vh;
+  height: 10vh;
+  background-color: transparent;
 }
