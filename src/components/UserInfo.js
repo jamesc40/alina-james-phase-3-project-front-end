@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import UserExercises from "./UserExercises.js";
 import NewExerciseForm from "./NewExerciseForm";
 import UserActivity from "./UserActivity";
-import { getInfo } from './crud'
+import { deleteExercise, getInfo } from './crud'
 import { Spinner } from "react-bootstrap";
 
 function UserInfo({ id }) {
@@ -34,6 +34,20 @@ function UserInfo({ id }) {
     });
   };
 
+  const handleDeleteExercise = (exercise, workout) => {
+    console.log(exercise.id)
+    deleteExercise(exercise.id)
+    let exercises = info.exercises.filter((someExercise) => someExercise !== exercise) 
+    let workouts = info.workouts.filter(someWorkout => someWorkout !== workout)
+    setInfo({
+      ...info,
+      total_exercises: parseInt(info.total_exercises) - 1,
+      total_minutes: parseInt(info.total_minutes - exercise.duration),
+      exercises: exercises,
+      workouts: workouts
+    })
+  }
+
   return (
     <div className="UserInfo">
       <div className="user">
@@ -47,7 +61,10 @@ function UserInfo({ id }) {
           <NewExerciseForm id={id} handleAddExercise={handleAddExercise} />
         </div>
       </div>
-      <UserExercises user={info} />
+      <UserExercises 
+        user={info} 
+        handleDeleteExercise={handleDeleteExercise}
+      />
     </div>
   );
 }
