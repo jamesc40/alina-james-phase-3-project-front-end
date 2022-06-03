@@ -45,7 +45,7 @@ function NewExerciseForm({ id, handleAddExercise }) {
             <option>Choose...</option>
             <option>Run</option>
             <option>Swim</option>
-            <option>Weight lift</option>
+            <option>Weight Lift</option>
             <option>Bike</option>
           </Form.Select>
         </Form.Group>

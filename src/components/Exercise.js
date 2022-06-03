@@ -2,6 +2,9 @@ import React from "react";
 import { Paper } from "@material-ui/core";
 
 function Exercise({ workouts, exercise }) {
+
+  if(!workouts || !exercise) return null
+
   return (
     <Paper
       style={{
@@ -14,12 +17,10 @@ function Exercise({ workouts, exercise }) {
       }}
     >
       <img className="exercise-img" src={workouts.image} />
-      {/* <div className="each-exercise-info"> */}
       <p>{exercise.date}</p>
       <h2>{workouts.workout_type}</h2>
       <p>Duration: {exercise.duration} minutes</p>
       <p>Difficulty: {exercise.difficulty}</p>
-      {/* </div> */}
     </Paper>
   );
 }
