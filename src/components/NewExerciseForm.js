@@ -14,6 +14,11 @@ function NewExerciseForm({ id, handleAddExercise }) {
 
   function handleSubmit(e) {
     e.preventDefault();
+    if(form.workout_type === '' || 
+      form.date === '' || 
+      form.difficulty === '' ||
+      form.duration === ''
+    ) return alert('Please, enter all fields')
 
     const newExercise = {
       user_id: id,
