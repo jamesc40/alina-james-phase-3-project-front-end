@@ -24,7 +24,7 @@ function NewExerciseForm({ id, handleAddExercise }) {
     };
 
     addExercise(newExercise).then((data) => handleAddExercise(data));
-
+    
     setForm({ ...emptyObj });
   }
 
