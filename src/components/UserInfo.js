@@ -35,7 +35,6 @@ function UserInfo({ id }) {
   };
 
   const handleDeleteExercise = (exercise, workout) => {
-    console.log(exercise.id)
     deleteExercise(exercise.id)
     let exercises = info.exercises.filter((someExercise) => someExercise !== exercise) 
     let workouts = info.workouts.filter(someWorkout => someWorkout !== workout)
